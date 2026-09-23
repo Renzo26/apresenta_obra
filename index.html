@@ -249,12 +249,6 @@
     ['Modelo treinado, servidor próprio', '25 a 200', 'Imagens ilimitadas', 'Dez câmeras ou mais'],
   ]
 
-  const fases = [
-    ['Fase 1', 'Piloto', 'Uma câmera na nuvem, análise a cada 5 segundos, no horário de trabalho. Sem servidor para manter.', 'US$ 514 por mês'],
-    ['Fase 2', 'Contrato fechado', 'Modelo treinado com as imagens da obra, rodando em servidor próprio. A nuvem fica só para casos novos.', 'US$ 25 a 200 por mês'],
-    ['Fase 3', 'Escala', 'Dez câmeras ou mais no mesmo servidor, com alerta por e-mail e WhatsApp.', 'Custo praticamente fixo'],
-  ]
-
   // ── Slides ────────────────────────────────────────────────────────────────
 
   const Titulo = ({ eyebrow, children }) => html`
@@ -530,57 +524,6 @@
           <p class="note">
             A confirmação de fumaça por IA continua na nuvem em qualquer cenário e custa de
             US$ 1 a 11 por mês, porque roda uma vez por evento, não a cada quadro.
-          </p>
-        </div>
-      `,
-    },
-    {
-      nome: 'Recomendação',
-      render: () => html`
-        <div class="slide">
-          <${Titulo} eyebrow="Caminho sugerido">Começar na nuvem, migrar quando o contrato fechar<//>
-          <div class="phases">
-            ${fases.map(([q, t, d, c]) => html`
-              <div class="phase" key=${q}>
-                <span class="when">${q}</span>
-                <h3>${t}</h3>
-                <p>${d}</p>
-                <span class="cost">${c}</span>
-              </div>
-            `)}
-          </div>
-          <p class="note">
-            A migração não reescreve o sistema: a troca do modelo acontece num único ponto do
-            servidor, e as telas continuam iguais.
-          </p>
-        </div>
-      `,
-    },
-    {
-      nome: 'Premissas',
-      render: () => html`
-        <div class="slide">
-          <${Titulo} eyebrow="Para fechar">O que está e o que não está nos valores<//>
-          <div class="versus">
-            <div class="card">
-              <h3>Incluído</h3>
-              <ul class="plain">
-                <li>Análise de imagem, por quadro, com desconto de volume aplicado</li>
-                <li>Confirmação de fumaça e leitura de riscos por IA</li>
-                <li>Registro das ocorrências com foto e histórico</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Ainda não incluído</h3>
-              <ul class="plain">
-                <li><strong>Ligação direta com câmera IP</strong>, a desenvolver: hoje o sistema recebe vídeo, foto e webcam</li>
-                <li><strong>Alerta por e-mail e WhatsApp</strong>, previsto para a fase 3</li>
-                <li>Servidor da aplicação, câmeras e internet no canteiro</li>
-              </ul>
-            </div>
-          </div>
-          <p class="note">
-            Preços de setembro de 2026, das tabelas públicas de Roboflow, RunPod e OpenAI.
           </p>
         </div>
       `,
