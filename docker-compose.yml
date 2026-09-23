@@ -1,0 +1,9 @@
+# Apresentação estática: um container, nginx servindo o index.html.
+# No Easypanel, aponte o domínio para o serviço `web`, porta 80.
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "80"
