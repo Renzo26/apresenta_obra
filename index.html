@@ -236,6 +236,13 @@
     ['10 câmeras', '25.920.000', '12.343', '1.234'],
   ]
 
+  const porSolucao = [
+    ['EPI e monitoramento por área', '3,51', '2.530', '1,24', '893'],
+    ['Áreas de risco', '3,57', '2.569', '1,29', '932'],
+    ['Fumaça e fogo', '3,53', '2.541', '1,26', '904'],
+    ['As três na mesma câmera', '5,69', '4.098', '2,02', '1.454'],
+  ]
+
   const arquiteturas = [
     ['Nuvem, como está hoje', '2.530', 'Sem servidor para manter', 'Custo cresce com o uso'],
     ['SAM 3 em GPU própria', '200 a 500', 'Imagens ilimitadas', 'Uma câmera por placa'],
@@ -319,6 +326,73 @@
               <p>EPI e áreas de risco dividem a mesma. Fumaça é uma segunda, porque procura outra coisa.</p>
             </div>
           </div>
+        </div>
+      `,
+    },
+    {
+      nome: 'Ao vivo',
+      render: () => html`
+        <div class="slide">
+          <${Titulo} eyebrow="A pergunta mais comum">Câmera ao vivo, 24 horas por dia: quanto custa a hora?<//>
+          <div class="versus">
+            <div class="card">
+              <h3>A transmissão em si</h3>
+              <span class="big">US$ 0,00 / hora</span>
+              <p class="note">
+                Manter a câmera aberta não é cobrado. O modelo não assiste ao vídeo: ele recebe
+                quadros, um a um.
+              </p>
+            </div>
+            <div class="card on">
+              <h3>A análise desses quadros</h3>
+              <span class="big">US$ 1,24 a 5,69 / hora</span>
+              <p class="note">
+                Depende de duas escolhas: de quantos em quantos segundos analisar, e quantos dos
+                três módulos ficam ligados na mesma câmera.
+              </p>
+            </div>
+          </div>
+          <p class="note">
+            Por isso "stream ao vivo" e "1 foto por segundo" custam a mesma coisa: ao vivo, na
+            prática, é analisar um quadro por segundo. O que muda a fatura é o intervalo.
+          </p>
+        </div>
+      `,
+    },
+    {
+      nome: 'Por solução',
+      render: () => html`
+        <div class="slide">
+          <${Titulo} eyebrow="Uma câmera, 24 horas por dia">O custo de cada uma das três soluções<//>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Solução</th>
+                  <th scope="col">US$/h · 1 foto/s</th>
+                  <th scope="col">US$/mês · 1 foto/s</th>
+                  <th scope="col">US$/h · a cada 5s</th>
+                  <th scope="col">US$/mês · a cada 5s</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${porSolucao.map(([n, h1, m1, h5, m5], i) => html`
+                  <tr key=${n} class=${i === 3 ? 'on' : ''}>
+                    <td>${n}</td>
+                    <td class="num">${h1}</td>
+                    <td class="num">${m1}</td>
+                    <td class="num">${h5}</td>
+                    <td class="num">${m5}</td>
+                  </tr>
+                `)}
+              </tbody>
+            </table>
+          </div>
+          <p class="note">
+            EPI e áreas de risco dividem a mesma análise de imagem; fumaça precisa de uma segunda,
+            por isso as três juntas não custam o triplo. A leitura de riscos e a confirmação de
+            fumaça pela IA de texto entram com US$ 39 e US$ 11 por mês, porque rodam sob demanda.
+          </p>
         </div>
       `,
     },
